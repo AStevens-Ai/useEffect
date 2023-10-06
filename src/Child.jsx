@@ -5,15 +5,16 @@ export function Child() {
   const [name, setName] = useState("")
   const [width, setWidth] = useState(window.innerWidth)
   const [height, setHeight] = useState(window.innerHeight)
-  
+
   useEffect(() => {
-    console.log(`My name is ${name} and I am ${age} years old`)}, [name, age]
-)
+    console.log(`My name is ${name} and I am ${age} years old`)
+  }, [name, age]
+  )
 
   useEffect(() => {
     console.log("Render")
   })
-  
+
   useEffect(() => {
     console.log("Hi")
     return () => {
@@ -22,23 +23,23 @@ export function Child() {
   }, [])
   useEffect(() => {
     document.title = name
-    
+
     const timeout = setTimeout(() => {
       console.log(`My name is ${name}`)
     }, 500)
 
-    return() => {
+    return () => {
       clearTimeout(timeout)
     }
   }, [name])
 
-  
+
   useEffect(() => {
     window.addEventListener("resize", () => {
       setWidth(window.innerWidth)
     })
   })
-  
+
   useEffect(() => {
     window.addEventListener("resize", () => {
       setHeight(window.innerHeight)
@@ -56,7 +57,7 @@ export function Child() {
       <br />
       My name is {name} and I am {age} years old.
       <br />
-      This is the Width of the Window : {width} 
+      This is the Width of the Window : {width}
       <br />
       This is the Height of the Window : {height}
     </div>
